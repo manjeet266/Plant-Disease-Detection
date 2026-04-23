@@ -1,0 +1,16 @@
+# Large video files (too big for GitHub)
+static/images/nature.mp4
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.spyproject/
+.vscode/
+.idea/
+
+# Uploaded images
+static/user uploaded/*
+!static/user uploaded/.gitkeep
