@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../static/images/leaf4.png" type="image/png">
+  <!-- <link rel="icon" href="leaf3.jpg" type="image/icon type"> -->
+
+
+  <!-- <link rel="Stylesheet" href="index.css" >   -->
+  <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+
+  <title>LEAF DISEASE DETECTION</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 40px 100px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      color: #fff;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .toggle {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .showcase {
+      position: absolute;
+      right: 0;
+      width: 100%;
+      min-height: 100vh;
+      padding: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      transition: 0.5s;
+      z-index: 2;
+    }
+
+    .showcase.active {
+      right: 300px;
+    }
+
+    .showcase h2 {
+      display: inline;
+    }
+
+    .showcase video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    /* Dark overlay on video */
+    .showcase::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+      z-index: 1;
+    }
+
+    .text {
+      position: relative;
+      z-index: 10;
+    }
+
+    .text h2 {
+      font-size: 5em;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text h3 {
+      font-size: 4em;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1em;
+      text-transform: uppercase;
+    }
+
+    .text p {
+      font-size: 1.1em;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 20px 0;
+      font-weight: 400;
+      max-width: 700px;
+    }
+
+    .text a {
+      display: inline-block;
+      font-size: 1em;
+      background: #fff;
+      padding: 10px 30px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 100px;
+      color: #111;
+      letter-spacing: 2px;
+      transition: 0.2s;
+    }
+
+    .text a:hover {
+      letter-spacing: 6px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu ul {
+      position: relative;
+    }
+
+    .menu ul li {
+      list-style: none;
+    }
+
+    .menu ul li a {
+      text-decoration: none;
+      font-size: 24px;
+      color: #111;
+    }
+
+    .menu ul li a:hover {
+      color: #43e97b;
+    }
+
+    @media (max-width: 991px) {
+
+      .showcase,
+      .showcase header {
+        padding: 40px;
+      }
+
+      .text h2 {
+        font-size: 3em;
+      }
+
+      .text h3 {
+        font-size: 2em;
+      }
+
+      .upload-area {
+        min-width: unset !important;
+        width: 100% !important;
+      }
+    }
+
+    /* ========== Enhanced Upload Area ========== */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      width: auto;
+      text-align: center;
+    }
+
+    .upload-area {
+      position: relative;
+      min-width: 420px;
+      padding: 32px 40px;
+      border: 2px dashed rgba(67, 233, 123, 0.5);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .upload-area:hover {
+      border-color: rgba(67, 233, 123, 0.9);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(67, 233, 123, 0.15);
+    }
+
+    .upload-icon {
+      font-size: 2.8em;
+      margin-bottom: 8px;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(67, 233, 123, 0.3));
+    }
+
+    .upload-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95em;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .file-name {
+      color: #43e97b;
+      font-size: 0.85em;
+      font-weight: 500;
+      min-height: 1.4em;
+      word-break: break-all;
+    }
+
+    /* Hidden native input */
+    .upload-area input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* ========== Enhanced Predict Button ========== */
+    .predict-btn {
+      position: relative;
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 52px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fff;
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      box-shadow: 0 4px 20px rgba(67, 233, 123, 0.35);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .predict-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+
+    .predict-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(67, 233, 123, 0.5);
+      letter-spacing: 5px;
+    }
+
+    .predict-btn:hover::before {
+      left: 100%;
+    }
+
+    .predict-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
+    }
+
+    .align1 {
+      margin-top: 9em;
+    }
+
+    .headalign {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .headalign img {
+      width: 3em;
+      height: 3em;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #000;
+    }
+
+    ::-webkit-scrollbar-track-piece {
+      background-color: #111;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      height: 50px;
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background-color: #000;
+    }
+
+    ::-webkit-resizer {
+      background-color: #000;
+    }
+
+    /* Pulse animation on upload icon */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    .upload-area:hover .upload-icon {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <!-- Video Source 
+https://www.pexels.com/video/drone-footage-of-farmland-4237250/ -->
+
+
+
+  <!-- my section-->
+  <section class="showcase">
+    <header>
+      <div class="headalign">
+        <img src="../static/images/plantw1.png" alt="Plant image">
+        <h2 class="logo">Plant Leaf Disease Detection</h2>
+
+      </div>
+      <div class="toggle"><span></span><span></span><span></span></div>
+    </header>
+    <!-- <img class="img-fluid img-thumbnail" src="/static/images/Gallery1.jpg" alt=""> -->
+    <video src="/static/images/84624-585553977_small.mp4" muted loop autoplay></video>
+    <div class="overlay"></div>
+    <div class="text">
+      <div class="align1">
+        <h2>Plant Disease Detection</h2>
+        <h3>Using Artificial Intelligence</h3>
+        <p>Test your plants for any diseases by uploading a picture of a leaf of your plant on this
+          Site.</p>
+        <p>Upload a picture below and click Predict button to check for any Diseases.</p>
+      </div>
+
+
+      <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showloading()">
+
+        <div class="upload-area" id="uploadArea">
+          <span class="upload-icon">🌿</span>
+          <span class="upload-label">Drag & drop or click to choose a leaf image</span>
+          <span class="file-name" id="fileName"></span>
+          <input type="file" name="image" id="fileInput" accept="image/*">
+        </div>
+        <button type="submit" class="predict-btn">🔍 Predict</button>
+
+      </form>
+    </div>
+
+  </section>
+  <div class="menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="/infor">Explore More</a></li>
+    </ul>
+  </div>
+
+
+  <script>
+    const menuToggle = document.querySelector('.toggle');
+    const showcase = document.querySelector('.showcase');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      showcase.classList.toggle('active');
+    })
+
+    // File name display
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const uploadArea = document.getElementById('uploadArea');
+
+    fileInput.addEventListener('change', function () {
+      if (this.files && this.files[0]) {
+        fileName.textContent = '📄 ' + this.files[0].name;
+        uploadArea.style.borderColor = 'rgba(67, 233, 123, 0.9)';
+        uploadArea.style.background = 'rgba(67, 233, 123, 0.08)';
+      } else {
+        fileName.textContent = '';
+      }
+    });
+
+    // Drag & drop visual feedback
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.style.borderColor = '#43e97b';
+      uploadArea.style.background = 'rgba(67, 233, 123, 0.12)';
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.style.borderColor = 'rgba(67, 233, 123, 0.5)';
+      uploadArea.style.background = 'rgba(255, 255, 255, 0.06)';
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

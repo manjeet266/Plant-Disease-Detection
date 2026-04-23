@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/images/leaf4.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+    <title>PLANT DISEASE PREDICTION</title>
+
+    <style>
+        * {
+            
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .card-style {
+            background-color: #dcdcdc;
+
+        }
+
+        .content {
+            padding: 15px;
+            color: white;
+            background-color: rgb(153, 156, 150);
+            /* font-size: 1rem; */
+        }
+
+        @media (max-width: 430px) and (min-width: 200px) {
+
+
+            .contents {
+                font-size: 0.6rem;
+                color: chartreuse;
+            }
+
+            .content-h1 {
+
+                font-size: 1rem;
+            }
+        }
+
+        .border img {
+            border: 2px solid black;
+        }
+        body{
+            background: fixed;
+    background-repeat: no-repeat;
+    background-image: url("../static/images/pl4.jpg");
+    background-size: cover;
+        }
+        *, *:before, *:after{
+            font-family: 'Poppins', sans-serif;
+        }
+        .text2{
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        .text a:hover {
+    background-color: black;
+    color: whitesmoke;
+  }
+
+  .text a {
+    display: inline-block;
+    font-size: 1em;
+    background: #fff;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #111;
+    letter-spacing: 2px;
+    transition: 0.2s;
+    margin-left: 43.3em;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <img src="{{ user_image }}" alt="User Image" class="img-thumbnail">
+                    <!-- <img src="{{pred_output}}" alt="User Image" class="img-thumbnail"> -->
+
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: black; color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{pred_output}} </h1>
+                </div>
+                <h3 style="padding: 15px; background-color: black; color: white;"
+                class="text-center mb-5 content-h1 rounded">
+                Powdery mildew of sweet and sour cherry is caused by Podosphaera clandestina, an obligate biotrophic fungus. Mid- and late-season sweet cherry (Prunus avium) cultivars are commonly affected, rendering them unmarketable due to the covering of white fungal growth on the cherry surface
+            </h2>
+               
+                <hr class="w-100 mx-auto ">
+            </div>
+        </div>
+
+<div class ="text2">
+        <h1> Solution for Disease / रोगाचा उपाय </h1>
+        <p><strong>The key to managing powdery mildew on the fruit is to keep the disease off of the leaves. Most synthetic fungicides are preventative, not eradicative, so be pro-active about disease prevention. Maintain a consistent program from shuck fall through harvest. Consider post-harvest preventative measures (e.g. application of sulfur, prevent trees from pushing for leaf growth) to obstruct the fungus from overwintering.</i></strong></p>
+       
+       
+    </div>
+    </div>
+
+
+
+    <section>
+
+       
+        <div class="container">
+            <P style="padding: 15px; background-color: black; color: white; font-size: 1.5rem;">
+               <br>Use pesticides with care. Apply them only to plants, animals, or sites listed on the labels. When mixing and applying pesticides, follow all label precautions to protect yourself and others around you. It is a violation of the law to disregard label directions. If pesticides are spilled on skin or clothing, remove clothing and wash skin thoroughly. Store pesticides in their original containers and keep them out of the reach of children, pets, and livestock.</p>
+               <br>
+              
+        </div>
+        <div class="container">
+            <h1 style="padding: 15px; background-color: black; color: white ; font-size: 2rem;"
+                class="text-center my-3 content-h1">
+                Recommended Medicines/औषधे</h1>
+        </div>
+        <div class="container">
+
+
+            <div class="card-columns">
+                <div class="card ">
+                    <div class="card-body text-left card-style">
+                        <img style="border-radius: 10px;" class="img-fluid" src="/static/images/pw1.jpg" alt="">
+                        <h3 class="card-text">Two kg per acre is mixed in an adequate quantity of water and applied on the foliage. If the diseases' intensity is severe another spray is to be given after a week.</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-left card-style">
+                        <img style="border-radius: 10px;" class="img-fluid" src="/static/images/pw2.jpg" alt="">
+                        <h3 class="card-text">0.5 mL / L of water/ 0.5 mL/L पाणी</h3>
+                    </div>
+                </div>             
+                <div class="card">
+                    <div class="card-body text-left card-style">
+                        <img style="border-radius: 10px;" class="img-fluid" src="/static/images/pw2.jpeg" alt="">
+                        <h3 class="card-text">120 To 200 Ml Per Acre ml/ 120</h3>
+                    </div>
+                </div>             
+                
+            </div>
+
+            <!-- <div class="container-fluid contents"> -->
+        </div>
+        <div class="text"><a href="/">Go Back</a></div>
+    </section>
+
+</body>
+
+</html>
